@@ -2,8 +2,31 @@ doctype html
 html
   head
     title Datacombs
+    = tag :link, href: 'http://fonts.googleapis.com/css?family=Gruppo', rel: 'stylesheet', type: 'text/css'
+    = tag :link, href: 'http://fonts.googleapis.com/css?family=PT+Serif', rel: 'stylesheet', type: 'text/css'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    == yield
+    .container-fluid
+      header.row
+        .logo.col-md-4
+          span.d Data
+          span.c combs
+        .col-md-6
+        .col-md-2
+      section.main.row
+        .col-md-12
+          == yield
+      footer.row
+        .col-md-12
+          | Development in progress by
+          =<> link_to "http://railsrumble.com/entries/77-datacombs" do
+            | Homo
+            span Honey
+            | Comb
+          | team for
+          =<> link_to 'RailsRumble 2014', "http://railsrumble.com"
+
+
+

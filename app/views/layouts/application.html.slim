@@ -9,24 +9,45 @@ html
     = csrf_meta_tags
   body
     .container-fluid
-      header.row
-        .logo.col-md-4
-          span.d Data
-          span.c combs
-        .col-md-6
-        .col-md-2
+      nav.row.navbar.navbar-default role="navigation"
+        .col-md-12
+          .navbar-header.logo
+            span.d Data
+            span.c combs
+          - if logged_in?
+            ul.nav.navbar-nav
+              li = link_to 'Dashboard', dashboard_path
+              li = link_to 'Hives', hives_path
+          ul.nav.navbar-nav.navbar-right
+            - if logged_in?
+              li = link_to current_user.name, dashboard_path
+              li = link_to 'Log out', bee_session_path(current_user), method: :delete
+            -else
+              li = link_to 'Log in', new_bee_session_path
+              li = link_to 'Sign up', new_bee_path
+      - if flash.present?
+        - flash.each do |level, message|
+          section.notes.row
+            .col-md-12
+              div class="#{flash_class(level)}" role="alert"
+                button type="button" class="close" data-dismiss="alert"
+                  span aria-hidden="true" &times;
+                  span class="sr-only" Close
+                = message
       section.main.row
         .col-md-12
           == yield
-      footer.row
-        .col-md-12
-          | Development in progress by
-          =<> link_to "http://railsrumble.com/entries/77-datacombs" do
-            | Homo
-            span Honey
-            | Comb
-          | team for
-          =<> link_to 'RailsRumble 2014', "http://railsrumble.com"
+    footer#footer
+      .container-fluid
+        .row
+          .col-md-12.muted
+            | Development in progress by
+            =<> link_to "http://railsrumble.com/entries/77-datacombs" do
+              | Homo
+              span Honey
+              | Comb
+            | team for
+            =<> link_to 'RailsRumble 2014', "http://railsrumble.com"
 
 
 

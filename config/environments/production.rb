@@ -75,4 +75,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # For mailers
+  config.action_mailer.default_url_options = { host: 'datacombs.r14.railsrumble.com' }
+
 end

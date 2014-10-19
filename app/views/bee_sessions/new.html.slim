@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading
+    h1.panel-title Log in
+  .panel-body
+    = form_tag bee_sessions_path, method: :post do
+      .row.form-group
+        = label_tag :email, 'Email', class: 'col-md-2'
+        .col-md-10
+          = text_field_tag :email, '', class: 'form-control'
+      .row.form-group
+        = label_tag :password, 'Password', class: 'col-md-2'
+        .col-md-10
+          = password_field_tag :password, '', class: 'form-control'
+      .row.form-group
+        .col-md-offset-2.col-md-10
+          = submit_tag "Login", class: 'btn btn-default'
+          |  or
+          =<> link_to 'Go to welcome page', root_path

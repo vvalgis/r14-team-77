@@ -1,5 +1,5 @@
 class BeeMailer < ActionMailer::Base
-  default from: "queen-be@example.com"
+  default from: "queen-bee@example.com"
 
   def activation_needed_email(bee)
     @bee = bee

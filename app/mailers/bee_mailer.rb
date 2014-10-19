@@ -3,7 +3,7 @@ class BeeMailer < ActionMailer::Base
 
   def activation_needed_email(bee)
     @bee = bee
-    @url  = activate_bee_url(bee.activation_token)
+    @url  = activate_bee_url(id: bee.activation_token)
     mail to: bee.email, subject: "Welcome to Datacombs"
   end
 

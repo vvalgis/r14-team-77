@@ -1,5 +1,5 @@
 class BeeSessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: %i(new create try_it)
   def new
     @bee = Bee.new
   end

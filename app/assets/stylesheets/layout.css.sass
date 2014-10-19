@@ -1,12 +1,24 @@
 .logo
   font-family: 'Gruppo', cursive
-  font-size: 4em
+  font-size: 2em
 .logo .d
   color: navy
 .logo .c
   color: rgb(255, 222, 0)
 
-footer
+html
+  position: relative
+  min-height: 100%
+body
+  /* Margin bottom by footer height */
+  margin-bottom: 60px
+
+footer#footer
+  position: absolute
+  bottom: 0
+  width: 100%
+  /* Set the fixed height of the footer here */
+  height: 60px
   font-size: 1.2em
   span
     color: rgb(255, 222, 0)

@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-heading
+    h1.panel-title New comb in hive #{@comb.hive.name}
+  .panel-body
+    = form_for [@hive, @comb], method: :post, html: {role: :form} do |f|
+      .row.form-group
+        = f.label :title, 'Title', class: 'col-md-2'
+        .col-md-10
+          = f.text_field :title, class: 'form-control'
+      .row.form-group
+        = f.label :description, 'Description', class: 'col-md-2'
+        .col-md-10
+          = f.text_area :description, class: 'form-control', rows: 10
+      .row.form-group
+        = f.label :visibility, 'Visibility', class: 'col-md-2'
+
+        .col-md-10
+          - Comb.visibilities.each do |name, value|
+            .radio
+              = f.label "visibility_#{name}" do
+                = f.radio_button :visibility, name
+                = I18n.t name, scope: 'comb_visibilities'
+      .row.form-group
+        .col-md-offset-2.col-md-10
+          = f.submit "Save", class: 'btn btn-default'
+          |  or
+          =<> link_to 'Go back', :back

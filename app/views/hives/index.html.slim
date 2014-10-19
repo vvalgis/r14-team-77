@@ -1,0 +1,17 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading.clearfix
+        h2.panel-title
+          | Hives
+          .pull-right
+            = link_to new_hive_path, class: 'btn btn-sm btn-primary' do
+              i.glyphicon.glyphicon-plus
+
+    table.table.table-striped
+      - current_user.hives.includes(:hive_memberships).each do |hive|
+        tr
+          td = link_to hive.name, hive_path(hive)
+          td = hive.description
+          td = (hive.owner?(current_user) ? 'Owner' : 'Member')
+

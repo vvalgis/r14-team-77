@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  comb_visibilities:
+    draft: 'Draft (only author can see it)'
+    personal: 'Personal comb (only author can see it)'
+    hive_shared: 'Hive wide comb (Every bee in hive can see it)'
+    world_shared: 'Worldwide comb (Anyone can see, even robots)'

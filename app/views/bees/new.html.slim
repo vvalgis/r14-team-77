@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-heading
+    h1.panel-title Sign up
+  .panel-body
+    = form_for @bee, method: :post do |f|
+      .row.form-group
+        = f.label :name, 'Name', class: 'col-md-2'
+        .col-md-10
+          = f.text_field :name, class: 'form-control'
+      .row.form-group
+        = f.label :email, 'Email', class: 'col-md-2'
+        .col-md-10
+          = f.text_field :email, class: 'form-control'
+      .row.form-group
+        = f.label :password, 'Password', class: 'col-md-2'
+        .col-md-10
+          = f.password_field :password, class: 'form-control'
+      .row.form-group
+        = f.label :password_confirmation, 'Repeat Password', class: 'col-md-2'
+        .col-md-10
+          = f.password_field :password_confirmation, class: 'form-control'
+      .row.form-group
+        .col-md-offset-2.col-md-10
+          = f.submit "Sign up", class: 'btn btn-default'
+          |  or
+          =<> link_to 'Go to welcome page', root_path
+

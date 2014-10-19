@@ -1,0 +1,24 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading.clearfix
+        h2.panel-title
+          = @comb.title
+          .pull-right
+            = link_to edit_hive_comb_path, class: 'btn btn-sm btn-primary' do
+              i.glyphicon.glyphicon-edit
+      .panel-body
+        = @comb.description
+      - if @comb.author?(current_user)
+        .panel-footer
+          | change visibility
+          .btn-group.pull-right
+            - Comb.visibilities.keys.each do |name|
+              - path = @hive ? change_visibility_hive_comb_path(@hive, @comb, visibility: name) : change_visibility_comb_path(@comb, visibility: name)
+              - if @comb.visibility == name
+                - opts = ['#', {class: 'btn btn-sm btn-default active'}]
+              - else
+                - opts = [path, {method: :put, class: 'btn btn-sm btn-default'}]
+              = link_to *opts do
+                i.glyphicon class="#{visibility_icon(name)}" rel="tooltip" title="#{I18n.t name, scope: 'comb_visibilities'}"
+

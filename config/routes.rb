@@ -2,6 +2,17 @@ Rails.application.routes.draw do
 
   root 'home#welcome'
 
+  resource :dashboard, only: [:show]
+
+  resources :hives, except: [:destroy] do
+    resources :combs, except: [:destroy] do
+      put :change_visibility, on: :member
+    end
+  end
+  resources :combs, only: [:index, :show] do
+    put :change_visibility, on: :member
+  end
+
   resources :bees, except: [:destroy] do
     member do
       get :activate

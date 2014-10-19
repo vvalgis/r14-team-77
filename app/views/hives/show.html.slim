@@ -1,0 +1,17 @@
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading.clearfix
+        h2.panel-title
+          | Combs in #{@hive.name}
+          .pull-right
+            = link_to new_hive_comb_path(@hive), class: 'btn btn-sm btn-primary' do
+              i.glyphicon.glyphicon-plus
+
+    table.table.table-striped
+      - @hive.combs.each do |comb|
+        tr
+          td
+            i.glyphicon class="#{visibility_icon(comb)}"  rel="tooltip" title="#{I18n.t comb.visibility, scope: 'comb_visibilities'}"
+          td = link_to comb.title, hive_comb_path(@hive, comb)
+

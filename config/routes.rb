@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'home#welcome'
 
+
   resource :dashboard, only: [:show]
 
   resources :hives, except: [:destroy] do
@@ -19,7 +20,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bee_sessions, only: %i(new create destroy)
+  resources :bee_sessions, only: %i(new create destroy) do
+    post :try_it, on: :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -14,6 +14,12 @@ class BeeSessionsController < ApplicationController
     end
   end
 
+  def try_it
+    @bee = Bee.first
+    auto_login(@bee)
+    redirect_to dashboard_path, notice: 'Welcome'
+  end
+
   def destroy
     logout
     redirect_to root_path, notice: 'Logged out!'
